@@ -1,0 +1,12 @@
+# Enable the rewrite engine
+RewriteEngine on
+
+# Check if the requested URL does not directly map to an existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Check if the requested URL does not directly map to an existing directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# If both conditions are true, redirect the request to index.php,
+# appending the original request path as a parameter
+RewriteRule .* index.php/$0 [PT,L]
